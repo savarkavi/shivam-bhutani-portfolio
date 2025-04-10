@@ -1,10 +1,16 @@
+import Featured from "@/components/home-page/Featured";
 import Hero from "@/components/home-page/Hero";
+import Works from "@/components/home-page/Works";
+import IntroOverlay from "@/components/IntroOverlay";
 
 export default function Home() {
   return (
-    <div>
-      <Hero />
-      <div className="h-screen"></div>
-    </div>
+    <IntroOverlay>
+      <div>
+        <Hero />
+        <Works />
+        <Featured />
+      </div>
+    </IntroOverlay>
   );
 }
