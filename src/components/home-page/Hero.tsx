@@ -1,104 +1,81 @@
 "use client";
 
-import { lavishlyYours, stardom } from "@/fonts/fonts";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import { useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLHeadingElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      if (!containerRef.current || !textRef.current || !imageRef.current) {
-        return;
-      }
+  useGSAP(() => {
+    if (!imageRef.current || !containerRef.current) return;
 
-      const containerRect = containerRef.current.getBoundingClientRect();
-      const textRect = textRef.current.getBoundingClientRect();
-      const imageRect = imageRef.current.getBoundingClientRect();
-
-      const containerCenterX = containerRect.left + containerRect.width / 2;
-      const textCenterX = textRect.left + textRect.width / 2;
-      const imageCenterX = imageRect.left + imageRect.width / 2;
-
-      const textMoveX = containerCenterX - textCenterX;
-      const imageMoveX = containerCenterX - imageCenterX;
-
-      const tl = gsap.timeline({
+    gsap
+      .timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 64",
-          end: "+=500",
+          start: "top 160",
+          end: "bottom 50%",
           scrub: true,
-          pin: containerRef.current,
+          pin: true,
         },
-      });
-
-      tl.to(".fashion-text", {
-        opacity: 0,
-        duration: 0.1,
       })
-        .to(
-          textRef.current,
-          {
-            x: textMoveX,
-            gap: 250,
-            ease: "none",
-          },
-          "<"
-        )
-        .to(
-          imageRef.current,
-          {
-            x: imageMoveX,
-            ease: "none",
-          },
-          "<"
-        )
-        .set(".photography-text", { color: "#FFBF00" });
-    },
+      .to(imageContainerRef.current, {
+        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        ease: "none",
+      })
+      .to(
+        imageRef.current,
+        {
+          scale: 1.1,
+        },
+        "<"
+      );
 
-    { scope: containerRef }
-  );
+    gsap.to(".header", {
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 160",
+        end: "bottom 50%",
+        toggleActions: "play none none reverse",
+      },
+      yPercent: -100,
+      ease: "linear",
+    });
+  });
 
   return (
     <div
       ref={containerRef}
-      className="hero-container w-full h-[calc(100vh-80px)] flex justify-center items-center overflow-hidden"
+      className="hero-container w-full h-[calc(100vh-132px)] flex justify-center items-center overflow-hidden p-8 relative"
     >
+      <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 max-w-[800px] text-center text-2xl">
+        <p>
+          I am a portrait, fashion and wedding photographer based in Delhi. For
+          me photography is about capturing beauty in ordinary moments. I want
+          to communicate stories, ideas, truth about life through my pictures. I
+          absolutely love what I am doing and cant think of anything other than
+          making pictures.
+        </p>
+      </div>
       <div
-        ref={contentRef}
-        className="flex gap-24 items-center justify-center relative"
+        ref={imageContainerRef}
+        className="w-full h-full relative rounded-xl overflow-hidden"
+        style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" }}
       >
-        <h1 ref={textRef} className="flex flex-col gap-16 items-center z-[10]">
-          <span className={`${lavishlyYours.className} text-9xl leading-tight`}>
-            Shivam Bhutani
-          </span>
-          <span
-            className={`fashion-text fade-text ${stardom.className} text-4xl uppercase absolute top-1/2`}
-          >
-            Fashion and Potrait
-          </span>
-          <span className={`photography-text ${stardom.className} text-9xl`}>
-            Photography
-          </span>
-        </h1>
-        <div ref={imageRef} className="w-[350px] h-[450px] relative border">
-          <Image
-            src="/shivam-potrait.JPG"
-            alt="Shivam potrait"
-            fill
-            className="object-cover"
-          />
-        </div>
+        <Image
+          ref={imageRef}
+          src="https://5ct1dh56fd.ufs.sh/f/MPc6a3KK4UyTGnH0n7aLYlxvh3w6yZGA81TSoOgq9feBskP4"
+          alt="shivam potrait"
+          fill
+          className="object-cover rounded-xl"
+        />
       </div>
     </div>
   );
