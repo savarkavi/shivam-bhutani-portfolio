@@ -9,3 +9,7 @@ export const lavishlyYours = Lavishly_Yours({
 export const stardom = localFont({
   src: "../fonts/Stardom-Regular.otf",
 });
+
+export const boska = localFont({
+  src: "../fonts/Boska-Bold.otf",
+});
