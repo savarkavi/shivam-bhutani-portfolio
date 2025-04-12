@@ -29,7 +29,7 @@ export default function RootLayout({
       <ReactLenis root>
         <body className={`${cormorantGaramond.className} antialiased`}>
           <Footer />
-          <div className="bg-white z-[99] mb-[100vh]">
+          <div className="z-[99] mb-[100vh] bg-white">
             <Header />
             {children}
           </div>
