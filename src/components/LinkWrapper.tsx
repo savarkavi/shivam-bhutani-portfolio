@@ -34,7 +34,7 @@ const LinkWrapper = ({
     <div
       onMouseEnter={handleHover}
       onMouseLeave={handleLeave}
-      className={`flex flex-col ${containerClassName}`}
+      className={`flex flex-col w-fit ${containerClassName}`}
     >
       {children}
       <div ref={underlineRef} className={`w-0 h-[1px] ${color}`} />
