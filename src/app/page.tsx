@@ -1,6 +1,6 @@
 import Featured from "@/components/home-page/Featured";
 import Hero from "@/components/home-page/Hero";
-import Works from "@/components/home-page/Works";
+import About from "@/components/home-page/About";
 import IntroOverlay from "@/components/IntroOverlay";
 
 export default function Home() {
@@ -8,8 +8,8 @@ export default function Home() {
     <IntroOverlay>
       <div>
         <Hero />
-        <Works />
         <Featured />
+        <About />
       </div>
     </IntroOverlay>
   );
