@@ -28,17 +28,11 @@ const About = () => {
         },
       });
 
-      ScrollTrigger.create({
-        trigger: container.current,
-        pin: true,
-        start: "55% top",
-      });
-
       const linesContainer = paragraphLinesRef.current;
 
       if (linesContainer) {
         const lineSpans = gsap.utils.toArray(
-          linesContainer.querySelectorAll(".line-span")
+          linesContainer.querySelectorAll(".line-span"),
         );
 
         gsap.from(lineSpans, {
@@ -55,7 +49,7 @@ const About = () => {
         });
       }
     },
-    { scope: main }
+    { scope: main },
   );
 
   const lines = [
@@ -66,11 +60,11 @@ const About = () => {
   ];
 
   return (
-    <div ref={main} className="min-h-screen flex flex-col gap-24 pt-48">
-      <div className="px-8 flex flex-col gap-16 items-start">
+    <div ref={main} className="flex min-h-screen flex-col gap-24 pt-48">
+      <div className="flex flex-col items-start gap-16 px-8">
         <div
           ref={paragraphLinesRef}
-          className="font-bold max-w-[800px] text-2xl"
+          className="max-w-[800px] text-2xl font-bold"
         >
           {lines.map((line, index) => (
             <div key={index} className="overflow-hidden py-[1px]">
@@ -84,9 +78,9 @@ const About = () => {
       </div>
       <div
         ref={container}
-        className="w-full h-[120vh] overflow-hidden relative"
+        className="relative h-[120vh] w-full overflow-hidden"
       >
-        <div className="relative w-full h-[140vh] -mt-[10%]">
+        <div className="relative -mt-[10%] h-[140vh] w-full">
           <Image
             ref={media}
             src="/bw.JPG"
