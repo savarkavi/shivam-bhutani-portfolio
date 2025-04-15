@@ -28,10 +28,10 @@ export default function RootLayout({
     <html lang="en">
       <ReactLenis root>
         <body className={`${cormorantGaramond.className} antialiased`}>
-          <Footer />
-          <div className="z-[99] mb-[100vh] bg-white">
+          <div className="z-[99] bg-white">
             <Header />
             {children}
+            <Footer />
           </div>
         </body>
       </ReactLenis>
