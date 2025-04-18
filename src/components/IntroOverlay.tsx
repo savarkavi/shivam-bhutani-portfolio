@@ -3,6 +3,7 @@
 import { useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { boska } from "@/fonts/fonts";
 
 gsap.registerPlugin(useGSAP);
 
@@ -54,7 +55,7 @@ const IntroOverlay = ({ children }: { children: React.ReactNode }) => {
             }}
           ></div>
           <div
-            className={`text-[8.5rem] absolute top-1/2 left-1/2 -translate-x-1/2 overlay-text opacity-0 text-white`}
+            className={`text-9xl absolute top-1/2 left-1/2 -translate-x-1/2 overlay-text opacity-0 text-white uppercase ${boska.className}`}
           >
             <h2>Shivam Bhutani</h2>
           </div>
