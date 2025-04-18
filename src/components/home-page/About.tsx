@@ -83,7 +83,7 @@ const About = () => {
         <div className="relative -mt-[10%] h-[140vh] w-full">
           <Image
             ref={media}
-            src="/bw.JPG"
+            src="https://5ct1dh56fd.ufs.sh/f/MPc6a3KK4UyTaEIpEvDkEnDItl6LXxvw3KS5QPWmzypukG0b"
             alt="model"
             fill
             className="object-cover"
