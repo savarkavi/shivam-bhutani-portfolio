@@ -88,7 +88,7 @@ const Hero = () => {
     >
       <div
         ref={heroContentWrapperRef}
-        className="relative flex h-full w-full flex-col items-center justify-between gap-2 overflow-hidden p-2 lg:p-8"
+        className="relative flex h-full w-full flex-col items-center justify-between gap-2 overflow-hidden p-2 lg:px-8 lg:pt-8"
       >
         <h1
           className={`${boska.className} text-center text-8xl font-bold uppercase xl:hidden`}
@@ -113,10 +113,11 @@ const Hero = () => {
         >
           <Image
             ref={imageRef}
-            src="https://5ct1dh56fd.ufs.sh/f/MPc6a3KK4UyTGnH0n7aLYlxvh3w6yZGA81TSoOgq9feBskP4"
+            src="/hero-img.jpg"
             alt="shivam potrait"
             fill
             className="rounded-xl object-cover"
+            priority
           />
         </div>
       </div>
