@@ -5,9 +5,11 @@ import Instagram from "./Instagram";
 
 const AboutContentWrapper = () => {
   return (
-    <div className="h-full w-full px-10 py-16">
-      <div className="section-title z-[10] mt-6 w-full border-t pt-10">
-        <h1 className={`text-9xl uppercase`}>About</h1>
+    <div className="h-full w-full overflow-x-hidden py-16 lg:px-8">
+      <div className="section-title lg::px-0 z-[10] mt-6 w-full px-8 text-center xl:text-start">
+        <div className="w-full border-t pt-10">
+          <h1 className="text-8xl uppercase xl:text-9xl">About</h1>
+        </div>
       </div>
       <Bio />
       <MyPhilosophy />

@@ -2,19 +2,21 @@ import Image from "next/image";
 
 const Bio = () => {
   return (
-    <div className="mt-32 flex gap-24">
-      <div className="relative h-[800px] w-full max-w-[60%] rounded-md">
+    <div className="mt-32 flex flex-col gap-12 lg:flex-row 2xl:gap-24">
+      <div className="relative h-[800px] w-full lg:max-w-[60%] lg:rounded-md">
         <Image
           src="/shivam-potrait.webp"
           alt="shivam-potrait"
           fill
-          className="h-auto rounded-md object-cover"
+          className="h-auto object-cover lg:rounded-md"
         />
       </div>
-      <div className="flex flex-col gap-16">
-        <h2 className="border-b border-gray-400 pb-6 text-lg uppercase">Bio</h2>
+      <div className="flex flex-col items-center gap-16 px-4 lg:px-0">
+        <h2 className="w-fit border-b border-gray-400 pb-6 text-center text-lg uppercase lg:text-start">
+          Biography
+        </h2>
         <p
-          className="max-w-[450px] text-justify text-4xl font-semibold"
+          className="max-w-[450px] text-justify text-2xl font-semibold xl:text-3xl 2xl:text-4xl"
           style={{ wordSpacing: "5px" }}
         >
           I am a portrait, fashion and street photographer based in India,
