@@ -6,10 +6,12 @@ import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import { useRef } from "react";
 import LinkWrapper from "../LinkWrapper";
+import { HomePage } from "@/sanity/types";
+import { getFormattedLines } from "@/lib/utils";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-const About = () => {
+const About = ({ data }: { data: HomePage }) => {
   const container = useRef(null);
   const media = useRef(null);
   const main = useRef<HTMLDivElement>(null);
@@ -52,19 +54,14 @@ const About = () => {
     { scope: main },
   );
 
-  const lines = [
-    "Doing a portrait session is not just about making photographs which",
-    "visually looks pretty but its more about trying to capture that one",
-    "moment where the person reveals himself to you and allows you",
-    "to see him as he really is which could be for a very brief moment.",
-  ];
+  const lines = getFormattedLines(data.aboutText, 10);
 
   return (
     <div ref={main} className="flex min-h-screen flex-col gap-24 pt-48">
       <div className="flex flex-col items-start gap-16 px-8">
         <div
           ref={paragraphLinesRef}
-          className="max-w-[800px] text-2xl font-bold"
+          className="max-w-[1000px] text-2xl font-bold"
         >
           {lines.map((line, index) => (
             <div key={index} className="overflow-hidden py-[1px]">

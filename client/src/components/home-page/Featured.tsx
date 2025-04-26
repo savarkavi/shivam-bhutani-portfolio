@@ -9,52 +9,14 @@ import { ScrollTrigger } from "gsap/all";
 import { useRef } from "react";
 import LinkWrapper from "../LinkWrapper";
 import Link from "next/link";
+import { HomePage } from "@/sanity/types";
+import { urlFor } from "@/lib/utils";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-const Featured = () => {
-  const featuredImages = [
-    {
-      src: "https://5ct1dh56fd.ufs.sh/f/MPc6a3KK4UyTPxezkwbrwAU5lKgR8P3bVkLJy4QBZIv96HhG",
-      alt: "Featured work 1",
-      color: "bg-white",
-    },
-    {
-      src: "https://5ct1dh56fd.ufs.sh/f/MPc6a3KK4UyTICnPwuASRfBah873y0IlMgeKxwLC6NPkEObo",
-      alt: "Featured work 2",
-      color: "bg-[#eddec1]",
-    },
-    {
-      src: "https://5ct1dh56fd.ufs.sh/f/MPc6a3KK4UyTRDpESFzxgjWHwbN1oSJmipUCzeDFZTrK3E9h",
-      alt: "Featured work 3",
-      color: "bg-[#f1f1f1]",
-    },
-    {
-      src: "https://5ct1dh56fd.ufs.sh/f/MPc6a3KK4UyTiHP93jy0mCeHfS5RkUJMloYKwnpAOjItibdP",
-      alt: "Featured work 4",
-      color: "bg-[#fdf6f0]",
-    },
-    {
-      src: "https://5ct1dh56fd.ufs.sh/f/MPc6a3KK4UyTkNAcyiBvzilW7V5Hup3rPX1qe62QngZT0U9d",
-      alt: "Featured work 5",
-    },
-    {
-      src: "https://5ct1dh56fd.ufs.sh/f/MPc6a3KK4UyTwdODsxIDSX6IfgHFiWBNuLP4EyUjvc53ARJZ",
-      alt: "Featured work 6",
-    },
-    {
-      src: "https://5ct1dh56fd.ufs.sh/f/MPc6a3KK4UyT0upPZLJhCByGPsTMWZXKRAiI3qk6No4VcY1w",
-      alt: "Featured work 7",
-    },
-    {
-      src: "https://5ct1dh56fd.ufs.sh/f/MPc6a3KK4UyTNTYJYFU2t23iM9pNjdQ0IyZnFPVuloGfqSmT",
-      alt: "Featured work 8",
-    },
-    {
-      src: "https://5ct1dh56fd.ufs.sh/f/MPc6a3KK4UyTTv3A8zUcxg7Xn9G5Y6jQLwRsDJzlf02ZHSPu",
-      alt: "Featured work 9",
-    },
-  ];
+const Featured = ({ data }: { data: HomePage }) => {
+  const featuredImgUrls =
+    data.featuredSection?.map((file) => urlFor(file)?.url()) || [];
 
   const container = useRef<HTMLDivElement>(null);
   const imageContainer = useRef<HTMLDivElement>(null);
@@ -163,15 +125,15 @@ const Featured = () => {
             </Link>
           </LinkWrapper>
         </div>
-        {featuredImages.map((image, index) => (
+        {data.featuredSection?.map((file, index) => (
           <div
-            key={index}
+            key={file._key}
             className="image-item-wrapper flex h-full w-full shrink-0 items-center justify-center p-4 xl:p-0"
           >
             <div className="relative mx-auto h-full w-full shrink-0 xl:max-w-[1200px]">
               <Image
-                src={image.src}
-                alt={image.alt}
+                src={featuredImgUrls[index] || "/"}
+                alt={file.alt || "shivam bhutani photography featured work"}
                 fill
                 className="h-auto w-full object-contain"
               />

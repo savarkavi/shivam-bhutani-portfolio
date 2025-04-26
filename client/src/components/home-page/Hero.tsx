@@ -7,10 +7,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { boska } from "@/fonts/fonts";
 import { useMediaQuery } from "usehooks-ts";
+import { HomePage } from "@/sanity/types";
+import { getFormattedLines, urlFor } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Hero = () => {
+const Hero = ({ data }: { data: HomePage }) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const heroContentWrapperRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -74,12 +76,10 @@ const Hero = () => {
     }
   });
 
-  const lines = [
-    "I am a portrait, fashion and street photographer based in India, Delhi.",
-    "For me photography is about capturing beauty in ordinary moments. I want to",
-    "communicate stories, ideas, truth about life through my pictures. I absolutely ",
-    "love what I am doing and cant think of anything other than making pictures.",
-  ];
+  const lines = getFormattedLines(data.heroSection?.heroText, 12);
+
+  const heroImgFile = data.heroSection?.heroImage;
+  const heroImgUrl = heroImgFile ? urlFor(heroImgFile)?.url() : null;
 
   return (
     <div
@@ -98,7 +98,7 @@ const Hero = () => {
 
         <div
           ref={paragraphLinesRef}
-          className="absolute top-[50%] left-1/2 mx-auto w-full max-w-[800px] -translate-x-1/2 -translate-y-1/2 px-8 text-center lg:px-0 xl:top-[45%] xl:text-2xl"
+          className="absolute top-[50%] left-1/2 mx-auto w-full max-w-[1000px] -translate-x-1/2 -translate-y-1/2 px-8 text-center lg:px-0 xl:top-[45%] xl:text-2xl"
         >
           {lines.map((line, index) => (
             <div key={index} className="overflow-hidden py-[1px]">
@@ -113,7 +113,7 @@ const Hero = () => {
         >
           <Image
             ref={imageRef}
-            src="/hero-img.jpg"
+            src={heroImgUrl || "/hero-img.jpg"}
             alt="shivam potrait"
             fill
             className="rounded-xl object-cover"
