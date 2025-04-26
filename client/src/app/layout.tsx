@@ -3,6 +3,7 @@ import { Cormorant_Garamond } from "next/font/google";
 import Header from "@/components/Header";
 import { ReactLenis } from "lenis/react";
 import Footer from "@/components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -33,6 +34,7 @@ export default function RootLayout({
             {children}
             <Footer />
           </div>
+          <SpeedInsights />
         </body>
       </ReactLenis>
     </html>
