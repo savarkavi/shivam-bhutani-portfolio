@@ -10,3 +10,28 @@ export const urlFor = (src: SanityImageSource | undefined) => {
     return imageSrc;
   }
 };
+
+export const getFormattedLines = (
+  text: string | undefined,
+  numOfWords: number,
+) => {
+  if (!text) return [];
+
+  const words = text.split(" ");
+  const lines: string[] = [];
+  let currentLine: string[] = [];
+
+  words.forEach((word) => {
+    if (currentLine.length >= numOfWords) {
+      lines.push(currentLine.join(" "));
+      currentLine = [];
+    }
+    currentLine.push(word);
+  });
+
+  if (currentLine.length > 0) {
+    lines.push(currentLine.join(" "));
+  }
+
+  return lines;
+};
