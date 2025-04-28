@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond } from "next/font/google";
 import Header from "@/components/Header";
 import { ReactLenis } from "lenis/react";
 import Footer from "@/components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
-
-const cormorantGaramond = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
+import { cormorantGaramond } from "@/fonts/fonts";
 
 export const metadata: Metadata = {
   title: {
