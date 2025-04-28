@@ -10,15 +10,16 @@ const Header = () => {
   const pathname = usePathname();
 
   const isHome = pathname.endsWith("/");
+  const isGallery = pathname.includes("/gallery");
 
   return (
     <div
       className={`header z-[10] flex h-[100px] w-full justify-center px-4 lg:px-8 xl:justify-between ${isHome ? "sticky top-0 items-center xl:h-[160px]" : "h-fit items-start pt-8 text-cyan-900"}`}
     >
       <h1
-        className={`${boska.className} ${isHome ? "text-center 2xl:text-9xl" : "2xl:text-[12rem]"} hidden font-bold uppercase xl:block xl:text-8xl`}
+        className={`${boska.className} ${isHome ? "text-center 2xl:text-9xl" : isGallery ? "2xl:text-6xl" : "2xl:text-[12rem]"} hidden font-bold uppercase xl:block xl:text-8xl`}
       >
-        {isHome ? (
+        {isHome || isGallery ? (
           "Shivam Bhutani"
         ) : (
           <>
