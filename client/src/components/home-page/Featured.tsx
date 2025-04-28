@@ -1,6 +1,5 @@
 "use client";
 
-import { stardom } from "@/fonts/fonts";
 import Image from "next/image";
 
 import gsap from "gsap";
@@ -90,9 +89,7 @@ const Featured = ({ data }: { data: HomePage }) => {
 
   return (
     <div ref={container} className="min-h-screen">
-      <div
-        className={`text-container flex flex-col items-center gap-2 ${stardom.className} pt-10`}
-      >
+      <div className={`text-container flex flex-col items-center gap-2 pt-10`}>
         <div className="overflow-hidden">
           <h2 className="section-title text-2xl xl:text-4xl">Featured</h2>
         </div>
