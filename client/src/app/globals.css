@@ -18,3 +18,52 @@
     --foreground: #ededed;
   }
 }
+
+.slick-slide > div {
+  margin: 0 10px; /* Adjust horizontal spacing as needed */
+  /* === CHANGE HERE: Add/update transition for filter === */
+  transition:
+    transform 300ms ease-in-out,
+    filter 300ms ease-in-out;
+}
+
+/* Style for the slides that are NOT centered */
+.slick-slide:not(.slick-center) > div > div {
+  /* Target your content div */
+  transform: scale(
+    0.8
+  ); /* Make non-center slides slightly smaller (Keep if desired) */
+  /* === CHANGE HERE: Replace opacity with brightness === */
+  filter: brightness(
+    0.6
+  ); /* Reduce brightness (e.g., 60%). Adjust value 0.0 to 1.0 */
+  /* Apply transition here too */
+  transition:
+    transform 500ms ease-in-out,
+    filter 500ms ease-in-out;
+}
+
+/* Style specifically for the CENTERED slide */
+.slick-center > div > div {
+  /* Target your content div inside the centered slide */
+  transform: scale(
+    1
+  ); /* Make the center slide slightly larger (Keep if desired) */
+  /* === CHANGE HERE: Ensure normal brightness === */
+  filter: brightness(1); /* Explicitly set normal brightness */
+  transition:
+    transform 500ms ease-in-out,
+    filter 500ms ease-in-out;
+}
+
+/* Optional: Ensure the centered item is visually on top if transforms cause overlap */
+.slick-center {
+  z-index: 1;
+}
+
+/* Optional: Remove default focus outline which can look distracting */
+.slick-slide:focus,
+.slick-slide > div:focus,
+.slick-slide > div > div:focus {
+  outline: none;
+}
