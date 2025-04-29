@@ -1,7 +1,8 @@
 import {
-  internalGroqTypeReferenceTo,
   SanityImageCrop,
+  SanityImageDimensions,
   SanityImageHotspot,
+  Slug,
 } from "./types";
 
 export type ResolvedFileAsset = {
@@ -12,18 +13,56 @@ export type ResolvedFileAsset = {
   size?: number;
 };
 
+export type ResolvedImageAsset = {
+  _id: string;
+  url?: string;
+  metadata?: {
+    lqip?: string;
+    dimensions?: SanityImageDimensions;
+  };
+};
+
+export type HomePageData = {
+  _id: string;
+  _type: "homePage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  pageTitle?: string;
+  heroSection?: {
+    heroImage?: {
+      asset?: ResolvedImageAsset;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    heroText?: string;
+  };
+  featuredSection?: Array<{
+    asset?: ResolvedImageAsset;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+  aboutText?: string;
+};
+
 export type AboutPageData = {
   _id: string;
+  _type: "aboutPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
   pageTitle?: string;
   biography?: {
     biographyContent?: string;
     bioImage?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
+      asset?: ResolvedImageAsset;
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
@@ -40,12 +79,7 @@ export type AboutPageData = {
   instagramSection?: {
     leftSideImages?: {
       instagramLeftSidePhotos?: Array<{
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
+        asset?: ResolvedImageAsset;
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
@@ -55,12 +89,7 @@ export type AboutPageData = {
     };
     rightSideImages?: {
       instagramRightSidePhotos?: Array<{
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
+        asset?: ResolvedImageAsset;
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
@@ -69,5 +98,56 @@ export type AboutPageData = {
       }>;
     };
     instagramLink?: string;
+  };
+};
+
+export type WorkSectionData = {
+  _type: "workSection";
+  sectionTitle?: string;
+  slug?: Slug;
+  description?: string;
+  coverImage?: {
+    asset?: ResolvedImageAsset;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+};
+
+export type WorksPageData = {
+  _id: string;
+  _type: "worksPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  pageTitle?: string;
+  workCategories?: Array<
+    {
+      _key: string;
+    } & WorkSectionData
+  >;
+};
+
+export type GalleryPageData = {
+  _id: string;
+  _type: "galleryPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  pageTitle?: string;
+  album?: {
+    albumName?: string;
+    slug?: Slug;
+    images?: Array<{
+      asset?: ResolvedImageAsset;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }>;
   };
 };
