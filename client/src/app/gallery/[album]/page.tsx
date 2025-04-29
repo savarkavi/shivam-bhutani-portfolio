@@ -1,6 +1,7 @@
 import AlbumContainer from "@/components/gallery-pages/AlbumContainer";
 import { client } from "@/sanity/client";
 import { GalleryPageData } from "@/sanity/customTypes";
+import { notFound } from "next/navigation";
 
 const GALLERY_QUERY = `
 *[_type == "galleryPage"][0] {
@@ -32,6 +33,8 @@ export default async function Page({
   const data: GalleryPageData = await client.fetch(GALLERY_QUERY, {
     album: album,
   });
+
+  if (!data.album) return notFound();
 
   return (
     <div className="h-fit">
