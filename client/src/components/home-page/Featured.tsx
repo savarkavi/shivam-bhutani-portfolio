@@ -137,14 +137,14 @@ const Featured = ({ data }: { data: HomePageData }) => {
             className="image-item-wrapper flex h-full w-full shrink-0 items-center justify-center p-4 xl:p-0"
           >
             <div
-              className="relative mx-auto h-full w-auto shrink-0 xl:max-w-[1200px]"
+              className="relative mx-auto w-full shrink-0 xl:h-full xl:w-auto xl:max-w-[1200px]"
               style={{ aspectRatio: featuredImgDimensions?.[index] }}
             >
               <Image
                 src={featuredImgUrls[index] || "/"}
                 alt={file.alt || "shivam bhutani photography featured work"}
                 fill
-                className="object-contain"
+                className="h-auto w-full object-contain"
                 placeholder={featuredImgLQIP?.[index] ? "blur" : "empty"}
                 blurDataURL={featuredImgLQIP?.[index]}
               />
