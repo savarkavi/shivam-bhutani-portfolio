@@ -12,6 +12,18 @@ const MyPhilosophy = ({ data }: { data: AboutPageData }) => {
             "Doing a portrait session is not just about making photographs which visually looks pretty but its more about trying to capture that one moment where the person reveals himself to you and allows you to see him as he really is which could be for a very brief moment."}
         </p>
       </div>
+      <div>
+        <div
+          key={data.myPhilosophySection?.aboutVideos?.[1].asset?._id}
+          className="nlock relative h-[800px] w-[600px] lg:hidden"
+        >
+          <video loop muted autoPlay className="h-full w-full object-cover">
+            <source
+              src={data.myPhilosophySection?.aboutVideos?.[1].asset?.url}
+            />
+          </video>
+        </div>
+      </div>
       <div className="flex w-full justify-center gap-12 lg:justify-between">
         {data.myPhilosophySection?.aboutVideos?.map((item) => (
           <div
