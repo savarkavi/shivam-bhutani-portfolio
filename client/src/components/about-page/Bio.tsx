@@ -7,6 +7,8 @@ const Bio = ({ data }: { data: AboutPageData }) => {
     ? urlFor(data.biography.bioImage)?.url()
     : null;
 
+  const bioImageLQIP = data.biography?.bioImage?.asset?.metadata?.lqip;
+
   return (
     <div className="mt-32 flex flex-col gap-12 lg:flex-row 2xl:gap-24">
       <div className="relative h-[800px] w-full lg:max-w-[60%] lg:rounded-md">
@@ -18,6 +20,8 @@ const Bio = ({ data }: { data: AboutPageData }) => {
           }
           fill
           className="h-auto object-cover lg:rounded-md"
+          placeholder={bioImageLQIP ? "blur" : "empty"}
+          blurDataURL={bioImageLQIP}
         />
       </div>
       <div className="flex flex-col items-center gap-16 px-4 lg:px-0">

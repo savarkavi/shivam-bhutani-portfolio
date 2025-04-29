@@ -7,12 +7,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { boska } from "@/fonts/fonts";
 import { useMediaQuery } from "usehooks-ts";
-import { HomePage } from "@/sanity/types";
 import { getFormattedLines, urlFor } from "@/lib/utils";
+import { HomePageData } from "@/sanity/customTypes";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Hero = ({ data }: { data: HomePage }) => {
+const Hero = ({ data }: { data: HomePageData }) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const heroContentWrapperRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -79,7 +79,10 @@ const Hero = ({ data }: { data: HomePage }) => {
   const lines = getFormattedLines(data.heroSection?.heroText, 12);
 
   const heroImgFile = data.heroSection?.heroImage;
-  const heroImgUrl = heroImgFile ? urlFor(heroImgFile)?.url() : null;
+  const heroImgUrl = heroImgFile
+    ? urlFor(heroImgFile)?.format("webp").url()
+    : null;
+  const heroImgLQIP = heroImgFile?.asset?.metadata?.lqip;
 
   return (
     <div
@@ -118,6 +121,8 @@ const Hero = ({ data }: { data: HomePage }) => {
             fill
             className="rounded-xl object-cover"
             priority
+            placeholder={heroImgLQIP ? "blur" : "empty"}
+            blurDataURL={heroImgLQIP}
           />
         </div>
       </div>

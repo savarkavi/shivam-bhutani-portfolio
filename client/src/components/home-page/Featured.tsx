@@ -8,14 +8,23 @@ import { ScrollTrigger } from "gsap/all";
 import { useRef } from "react";
 import LinkWrapper from "../LinkWrapper";
 import Link from "next/link";
-import { HomePage } from "@/sanity/types";
 import { urlFor } from "@/lib/utils";
+import { HomePageData } from "@/sanity/customTypes";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-const Featured = ({ data }: { data: HomePage }) => {
+const Featured = ({ data }: { data: HomePageData }) => {
   const featuredImgUrls =
-    data.featuredSection?.map((file) => urlFor(file)?.url()) || [];
+    data.featuredSection?.map((file) => urlFor(file)?.format("webp").url()) ||
+    [];
+
+  const featuredImgLQIP = data.featuredSection?.map(
+    (file) => file.asset?.metadata?.lqip,
+  );
+
+  const featuredImgDimensions = data.featuredSection?.map(
+    (file) => file.asset?.metadata?.dimensions?.aspectRatio,
+  );
 
   const container = useRef<HTMLDivElement>(null);
   const imageContainer = useRef<HTMLDivElement>(null);
@@ -127,12 +136,17 @@ const Featured = ({ data }: { data: HomePage }) => {
             key={file._key}
             className="image-item-wrapper flex h-full w-full shrink-0 items-center justify-center p-4 xl:p-0"
           >
-            <div className="relative mx-auto h-full w-full shrink-0 xl:max-w-[1200px]">
+            <div
+              className="relative mx-auto h-full w-auto shrink-0 xl:max-w-[1200px]"
+              style={{ aspectRatio: featuredImgDimensions?.[index] }}
+            >
               <Image
                 src={featuredImgUrls[index] || "/"}
                 alt={file.alt || "shivam bhutani photography featured work"}
                 fill
-                className="h-auto w-full object-contain"
+                className="object-contain"
+                placeholder={featuredImgLQIP?.[index] ? "blur" : "empty"}
+                blurDataURL={featuredImgLQIP?.[index]}
               />
             </div>
           </div>

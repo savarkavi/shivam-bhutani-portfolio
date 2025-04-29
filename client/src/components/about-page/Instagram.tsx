@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
@@ -33,13 +34,13 @@ const Instagram = ({ data }: { data: AboutPageData }) => {
       .to(imgRef1.current, { left: "20%", ease: "linear" })
       .to(
         imgRef2.current,
-        { left: smallScreen ? "-35%" : "20%", ease: "linear" },
+        { left: smallScreen ? "-45%" : "20%", ease: "linear" },
         "<",
       )
       .to(imgRef3.current, { right: "20%", ease: "linear" }, "<")
       .to(
         imgRef4.current,
-        { right: smallScreen ? "-35%" : "20%", ease: "linear" },
+        { right: smallScreen ? "-45%" : "20%", ease: "linear" },
         "<",
       );
   });
@@ -62,6 +63,11 @@ const Instagram = ({ data }: { data: AboutPageData }) => {
     ? urlFor(fourthImageFile)?.url()
     : null;
 
+  const firstImageLQIP = firstImageFile?.asset?.metadata?.lqip;
+  const secondImageLQIP = secondImageFile?.asset?.metadata?.lqip;
+  const thirdImageLQIP = thirdImageFile?.asset?.metadata?.lqip;
+  const fourthImageLQIP = fourthImageFile?.asset?.metadata?.lqip;
+
   return (
     <div
       ref={containerRef}
@@ -76,6 +82,8 @@ const Instagram = ({ data }: { data: AboutPageData }) => {
           alt="insta img"
           fill
           className="object-cover shadow-xl lg:rounded-lg"
+          placeholder={firstImageLQIP ? "blur" : "empty"}
+          blurDataURL={firstImageLQIP}
         />
       </div>
       <div
@@ -87,6 +95,8 @@ const Instagram = ({ data }: { data: AboutPageData }) => {
           alt="insta img"
           fill
           className="rounded-lg object-cover shadow-xl"
+          placeholder={secondImageLQIP ? "blur" : "empty"}
+          blurDataURL={secondImageLQIP}
         />
       </div>
       <div
@@ -98,6 +108,8 @@ const Instagram = ({ data }: { data: AboutPageData }) => {
           alt="insta img"
           fill
           className="rounded-lg object-cover shadow-xl"
+          placeholder={thirdImageLQIP ? "blur" : "empty"}
+          blurDataURL={thirdImageLQIP}
         />
       </div>
       <div
@@ -109,11 +121,19 @@ const Instagram = ({ data }: { data: AboutPageData }) => {
           alt="insta img"
           fill
           className="rounded-lg object-cover shadow-xl"
+          placeholder={fourthImageLQIP ? "blur" : "empty"}
+          blurDataURL={fourthImageLQIP}
         />
       </div>
       <div className="flex flex-col items-center text-4xl font-bold sm:text-6xl md:gap-2 md:text-7xl">
         <h2 className="md:leading-14">Visit</h2>
-        <h2 className="md:leading-14">Instagram</h2>
+        <Link
+          href="https://www.instagram.com/shivambhutanii/"
+          target="_blank"
+          className="underline md:leading-14"
+        >
+          Instagram
+        </Link>
         <p className="mt-6 max-w-[200px] text-center text-sm font-normal md:max-w-[250px] md:text-lg">
           I am most active on instagram. Follow me there to stay updated on my
           latest works.

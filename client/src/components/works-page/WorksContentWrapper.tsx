@@ -7,12 +7,12 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import { useRef } from "react";
-import { WorksPage } from "@/sanity/types";
 import { urlFor } from "../../lib/utils";
+import { WorksPageData } from "@/sanity/customTypes";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-const WorksContentWrapper = ({ data }: { data: WorksPage }) => {
+const WorksContentWrapper = ({ data }: { data: WorksPageData }) => {
   const container = useRef(null);
 
   return (
@@ -29,7 +29,7 @@ const WorksContentWrapper = ({ data }: { data: WorksPage }) => {
             {data.workCategories?.map((item, i) => (
               <Link
                 key={item._key}
-                href={`${item.slug?.current}`}
+                href={`/gallery/${item.slug?.current}`}
                 className="w-fit text-xl font-semibold"
               >
                 {`[${i}] ${item.sectionTitle}`}
@@ -42,6 +42,8 @@ const WorksContentWrapper = ({ data }: { data: WorksPage }) => {
             const coverImageUrl = item.coverImage
               ? urlFor(item.coverImage)?.url()
               : null;
+
+            const coverImageLQIP = item.coverImage?.asset?.metadata?.lqip;
             return (
               <div
                 key={item._key}
@@ -55,6 +57,8 @@ const WorksContentWrapper = ({ data }: { data: WorksPage }) => {
                     alt={item.coverImage?.alt || "cover image"}
                     fill
                     className="scale-105 object-cover transition-all duration-500 group-hover:scale-100"
+                    placeholder={coverImageLQIP ? "blur" : "empty"}
+                    blurDataURL={coverImageLQIP}
                   />
                 </div>
                 <div className="flex flex-col gap-10 px-4 xl:px-0">
@@ -62,13 +66,16 @@ const WorksContentWrapper = ({ data }: { data: WorksPage }) => {
                     <h2 className="text-4xl uppercase lg:text-6xl">
                       {item.sectionTitle}
                     </h2>
-                    <p>{`21 photos`}</p>
+                    {/* <p>{`21 photos`}</p> */}
                   </div>
                   <p className="max-w-[800px] text-sm lg:text-lg xl:max-w-[1000px]">
                     {item.description}
                   </p>
                   <LinkWrapper color="bg-black">
-                    <Link href={`${item.slug?.current}`} className="text-lg">
+                    <Link
+                      href={`/gallery${item.slug?.current}`}
+                      className="text-lg"
+                    >
                       See album
                     </Link>
                   </LinkWrapper>
