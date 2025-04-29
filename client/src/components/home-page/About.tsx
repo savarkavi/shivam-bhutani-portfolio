@@ -6,12 +6,12 @@ import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import { useRef } from "react";
 import LinkWrapper from "../LinkWrapper";
-import { HomePage } from "@/sanity/types";
 import { getFormattedLines } from "@/lib/utils";
+import { HomePageData } from "@/sanity/customTypes";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-const About = ({ data }: { data: HomePage }) => {
+const About = ({ data }: { data: HomePageData }) => {
   const container = useRef(null);
   const media = useRef(null);
   const main = useRef<HTMLDivElement>(null);
