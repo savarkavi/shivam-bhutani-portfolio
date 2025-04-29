@@ -2,7 +2,7 @@ import { AboutPageData } from "@/sanity/customTypes";
 
 const MyPhilosophy = ({ data }: { data: AboutPageData }) => {
   return (
-    <div className="mt-46 flex flex-col-reverse items-center gap-24 lg:flex-col">
+    <div className="mt-46 flex flex-col-reverse items-center gap-24 lg:flex-col xl:gap-10">
       <div className="flex flex-col items-center gap-16 px-4 lg:px-0">
         <h2 className="border-b border-gray-400 pb-6 text-lg uppercase">
           My Philosophy
@@ -24,7 +24,7 @@ const MyPhilosophy = ({ data }: { data: AboutPageData }) => {
           </video>
         </div>
       </div>
-      <div className="flex w-full justify-center gap-12 lg:justify-between">
+      <div className="flex w-full justify-center gap-12 lg:justify-between xl:gap-2">
         {data.myPhilosophySection?.aboutVideos?.map((item) => (
           <div
             key={item.asset?._id}
