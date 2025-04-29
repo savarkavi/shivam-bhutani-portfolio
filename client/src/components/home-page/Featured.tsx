@@ -113,16 +113,16 @@ const Featured = ({ data }: { data: HomePageData }) => {
         <div className="links-container absolute top-4 left-0 z-[20] flex w-full items-center justify-between px-2 text-sm uppercase lg:px-8">
           <div className="flex w-full items-center justify-center gap-4 lg:justify-start xl:gap-6">
             <LinkWrapper color="bg-white">
-              <Link href="/potraits">Potraits</Link>
+              <Link href="/gallery/portraits">Potraits</Link>
             </LinkWrapper>
             <LinkWrapper color="bg-white">
-              <Link href="/fashion">Fashion</Link>
+              <Link href="/gallery/fashion">Fashion</Link>
             </LinkWrapper>
             <LinkWrapper color="bg-white">
-              <Link href="/personal">Personal</Link>
+              <Link href="/gallery/commercial">Commercial</Link>
             </LinkWrapper>
             <LinkWrapper color="bg-white">
-              <Link href="/commercial">Commercial</Link>
+              <Link href="/gallery/fine-art">Fine art</Link>
             </LinkWrapper>
           </div>
           <LinkWrapper color="bg-white">
@@ -158,7 +158,7 @@ const Featured = ({ data }: { data: HomePageData }) => {
 
         <div className="slide-text absolute top-1/2 hidden uppercase lg:right-6 lg:block xl:right-10">
           <LinkWrapper color="bg-white">
-            <Link href="/work">Explore More</Link>
+            <Link href="/works">Explore More</Link>
           </LinkWrapper>
         </div>
       </div>
