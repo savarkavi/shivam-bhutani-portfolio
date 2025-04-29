@@ -101,7 +101,7 @@ const Hero = ({ data }: { data: HomePageData }) => {
 
         <div
           ref={paragraphLinesRef}
-          className="absolute top-[50%] left-1/2 mx-auto w-full max-w-[1000px] -translate-x-1/2 -translate-y-1/2 px-8 text-center lg:px-0 xl:top-[45%] xl:text-2xl"
+          className="absolute top-[60%] left-1/2 mx-auto w-full max-w-[1000px] -translate-x-1/2 -translate-y-1/2 px-8 text-center lg:px-0 xl:top-[45%] xl:text-2xl"
         >
           {lines.map((line, index) => (
             <div key={index} className="overflow-hidden py-[1px]">
