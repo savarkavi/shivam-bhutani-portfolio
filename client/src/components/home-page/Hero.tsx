@@ -87,7 +87,7 @@ const Hero = ({ data }: { data: HomePageData }) => {
   return (
     <div
       ref={heroRef}
-      className="h-[calc(100dvh-100px)] w-full xl:h-[calc(100dvh-160px)]"
+      className="h-[calc(100svh-100px)] w-full xl:h-[calc(100svh-160px)]"
     >
       <div
         ref={heroContentWrapperRef}
