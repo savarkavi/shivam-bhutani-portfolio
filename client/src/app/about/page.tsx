@@ -3,10 +3,20 @@ import { client } from "@/sanity/client";
 import { AboutPageData } from "@/sanity/customTypes";
 
 const ABOUT_QUERY = `*[_type == "aboutPage"][0] {
-  _id,
-  pageTitle,
-  biography,
-  instagramSection,
+  ...,
+  biography {
+    ...,
+    bioImage {
+      ...,
+      asset-> {
+        ...,
+        metadata {
+          lqip,
+          dimensions
+        }
+      }
+    }
+  },
   myPhilosophySection {
     myPhilosophyContent,
     aboutVideos[] {
@@ -17,6 +27,32 @@ const ABOUT_QUERY = `*[_type == "aboutPage"][0] {
         mimeType
       }
     }
+  },
+  instagramSection {
+    leftSideImages {
+      instagramLeftSidePhotos[] {
+        ...,
+        asset-> {
+          ...,
+          metadata {
+            lqip,
+            dimensions
+          }
+        }
+      }
+    },
+    rightSideImages {
+      instagramRightSidePhotos[] {
+        ...,
+        asset-> {
+          ...,
+          metadata {
+            lqip,
+            dimensions
+          }
+        }
+      }
+    },
   }
 }`;
 

@@ -1,8 +1,26 @@
 import AlbumContainer from "@/components/gallery-pages/AlbumContainer";
 import { client } from "@/sanity/client";
-import { GalleryPage } from "@/sanity/types";
+import { GalleryPageData } from "@/sanity/customTypes";
 
-const GALLERY_QUERY = `*[_type == "galleryPage"][0]`;
+const GALLERY_QUERY = `
+*[_type == "galleryPage"][0] {
+  ...,
+  "album": albums[slug.current == $album][0] {
+    albumName,
+    slug,
+    images[] {
+      ...,
+      asset-> {
+        ...,
+        metadata {
+          dimensions { width, height },
+          lqip
+        }
+      }
+    }
+  }
+}
+`;
 
 export default async function Page({
   params,
@@ -11,7 +29,9 @@ export default async function Page({
 }) {
   const { album } = await params;
 
-  const data: GalleryPage = await client.fetch(GALLERY_QUERY);
+  const data: GalleryPageData = await client.fetch(GALLERY_QUERY, {
+    album: album,
+  });
 
   return (
     <div className="h-fit">
