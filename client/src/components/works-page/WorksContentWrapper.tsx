@@ -73,7 +73,7 @@ const WorksContentWrapper = ({ data }: { data: WorksPageData }) => {
                   </p>
                   <LinkWrapper color="bg-black">
                     <Link
-                      href={`/gallery${item.slug?.current}`}
+                      href={`/gallery/${item.slug?.current}`}
                       className="text-lg"
                     >
                       See album
