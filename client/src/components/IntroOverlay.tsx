@@ -113,7 +113,7 @@ const IntroOverlay = ({ children }: { children: React.ReactNode }) => {
           </div>
 
           <div
-            className={`overlay-text absolute top-1/2 left-1/2 -translate-x-1/2 text-9xl text-white uppercase opacity-0 ${boska.className}`}
+            className={`overlay-text absolute top-1/2 left-1/2 -translate-x-1/2 text-center text-5xl text-white uppercase opacity-0 lg:text-7xl xl:text-9xl ${boska.className}`}
             style={{ willChange: "opacity, transform" }}
           >
             <h2>Shivam Bhutani</h2>
