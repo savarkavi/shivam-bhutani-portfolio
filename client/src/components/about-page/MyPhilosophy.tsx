@@ -15,7 +15,7 @@ const MyPhilosophy = ({ data }: { data: AboutPageData }) => {
       <div>
         <div
           key={data.myPhilosophySection?.aboutVideos?.[1].asset?._id}
-          className="nlock relative h-[800px] w-[600px] lg:hidden"
+          className="relative block h-[800px] w-[600px] lg:hidden"
         >
           <video loop muted autoPlay className="h-full w-full object-cover">
             <source
