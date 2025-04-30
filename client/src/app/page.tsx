@@ -19,13 +19,16 @@ const HOME_QUERY = `*[_type == "homePage"][0] {
     },
     heroText  
   },
-  featuredSection[] {
+  featuredSection {
     ...,
-    asset-> {
+    featuredImages[] {
       ...,
-      metadata {
-        lqip,
-        dimensions
+      asset-> {
+        ...,
+        metadata {
+          lqip,
+          dimensions
+        }
       }
     }
   },

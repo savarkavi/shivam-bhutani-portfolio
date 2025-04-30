@@ -15,14 +15,15 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Featured = ({ data }: { data: HomePageData }) => {
   const featuredImgUrls =
-    data.featuredSection?.map((file) => urlFor(file)?.format("webp").url()) ||
-    [];
+    data.featuredSection?.featuredImages?.map((file) =>
+      urlFor(file)?.format("webp").url(),
+    ) || [];
 
-  const featuredImgLQIP = data.featuredSection?.map(
+  const featuredImgLQIP = data.featuredSection?.featuredImages?.map(
     (file) => file.asset?.metadata?.lqip,
   );
 
-  const featuredImgDimensions = data.featuredSection?.map(
+  const featuredImgDimensions = data.featuredSection?.featuredImages?.map(
     (file) => file.asset?.metadata?.dimensions?.aspectRatio,
   );
 
@@ -112,18 +113,11 @@ const Featured = ({ data }: { data: HomePageData }) => {
       >
         <div className="links-container absolute top-4 left-0 z-[20] flex w-full items-center justify-between px-2 text-sm uppercase lg:px-8">
           <div className="flex w-full items-center justify-center gap-4 lg:justify-start xl:gap-6">
-            <LinkWrapper color="bg-white">
-              <Link href="/gallery/portraits">Potraits</Link>
-            </LinkWrapper>
-            <LinkWrapper color="bg-white">
-              <Link href="/gallery/fashion">Fashion</Link>
-            </LinkWrapper>
-            <LinkWrapper color="bg-white">
-              <Link href="/gallery/commercial">Commercial</Link>
-            </LinkWrapper>
-            <LinkWrapper color="bg-white">
-              <Link href="/gallery/fine-art">Fine art</Link>
-            </LinkWrapper>
+            {data.featuredSection?.featuredLinks?.map((link) => (
+              <LinkWrapper key={link._key} color="bg-white">
+                <Link href={`gallery/${link.slug?.current}`}>{link.name}</Link>
+              </LinkWrapper>
+            ))}
           </div>
           <LinkWrapper color="bg-white">
             <Link href="/contact" className="hidden lg:block">
@@ -131,7 +125,7 @@ const Featured = ({ data }: { data: HomePageData }) => {
             </Link>
           </LinkWrapper>
         </div>
-        {data.featuredSection?.map((file, index) => (
+        {data.featuredSection?.featuredImages?.map((file, index) => (
           <div
             key={file._key}
             className="image-item-wrapper flex h-full w-full shrink-0 items-center justify-center p-4 xl:p-0"
