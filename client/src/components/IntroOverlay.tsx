@@ -41,7 +41,7 @@ const IntroOverlay = ({ children }: { children: React.ReactNode }) => {
         counter,
         {
           value: 99,
-          duration: 5,
+          duration: 2,
           ease: "power2.inOut",
           onUpdate: () => {
             const timerElement = containerRef.current?.querySelector(timerText);

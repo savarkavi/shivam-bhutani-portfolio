@@ -25,7 +25,7 @@ const Header = () => {
           opacity: 0,
           duration: 0.8,
           ease: "power2.out",
-          delay: 7.8,
+          delay: 4.8,
         });
 
         gsap.from(".link-reveal", {
@@ -34,7 +34,7 @@ const Header = () => {
           duration: 0.5,
           ease: "power1.out",
           stagger: 0.1,
-          delay: 7.8,
+          delay: 4.8,
         });
       }
     },
