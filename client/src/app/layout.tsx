@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <ReactLenis root>
         <body className={`${cormorantGaramond.className} antialiased`}>
-          <div className="z-[99] bg-white">
+          <div className="z-[99] flex h-full min-h-screen flex-col justify-between bg-white">
             <Header />
             {children}
             <Footer />
