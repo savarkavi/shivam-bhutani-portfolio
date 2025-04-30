@@ -44,22 +44,57 @@ export const homePage = defineType({
     defineField({
       name: 'featuredSection',
       title: 'Featured section',
-      type: 'array',
-      description: 'Add images to be featured in your home page.',
-      of: [
-        {
-          type: 'image',
-          title: 'Image',
-          fields: [
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'featuredLinks',
+          title: 'Featured links',
+          type: 'array',
+          of: [
             {
-              name: 'alt',
-              type: 'string',
-              title: 'Alternative Text',
-              validation: (Rule) => Rule.required(),
+              type: 'object',
+              name: 'link',
+              title: 'Link',
+              fields: [
+                defineField({
+                  name: 'name',
+                  title: 'Link name',
+                  type: 'string',
+                  validation: (rule) => rule.required(),
+                }),
+                defineField({
+                  name: 'slug',
+                  title: 'Link slug',
+                  type: 'slug',
+                  validation: (rule) => rule.required(),
+                }),
+              ],
             },
           ],
           validation: (rule) => rule.required(),
-        },
+        }),
+        defineField({
+          name: 'featuredImages',
+          title: 'Featured Images',
+          type: 'array',
+          description: 'Add images to be featured in your home page.',
+          of: [
+            {
+              type: 'image',
+              title: 'Image',
+              fields: [
+                {
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alternative Text',
+                  validation: (Rule) => Rule.required(),
+                },
+              ],
+              validation: (rule) => rule.required(),
+            },
+          ],
+          validation: (Rule) => Rule.required(),
+        }),
       ],
       validation: (Rule) => Rule.required(),
     }),
