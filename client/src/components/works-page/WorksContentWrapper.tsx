@@ -51,7 +51,7 @@ const WorksContentWrapper = ({ data }: { data: WorksPageData }) => {
                   index % 2 === 1 ? "xl:flex-row-reverse" : ""
                 }`}
               >
-                <div className="group relative h-[1200px] w-full cursor-pointer overflow-hidden transition-all hover:grayscale-75">
+                <div className="group relative h-[1200px] w-full cursor-pointer overflow-hidden transition-all hover:grayscale-100">
                   <Image
                     src={coverImageUrl || "https://placeholder.co/550x310/png"}
                     alt={item.coverImage?.alt || "cover image"}
