@@ -40,15 +40,23 @@ export type HomePageData = {
     };
     heroText?: string;
   };
-  featuredSection?: Array<{
-    asset?: ResolvedImageAsset;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
+  featuredSection?: {
+    featuredLinks?: Array<{
+      name?: string;
+      slug?: Slug;
+      _type: "link";
+      _key: string;
+    }>;
+    featuredImages?: Array<{
+      asset?: ResolvedImageAsset;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }>;
+  };
   aboutText?: string;
 };
 

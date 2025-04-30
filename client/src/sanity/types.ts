@@ -101,20 +101,28 @@ export type HomePage = {
     };
     heroText?: string;
   };
-  featuredSection?: Array<{
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
+  featuredSection?: {
+    featuredLinks?: Array<{
+      name?: string;
+      slug?: Slug;
+      _type: "link";
+      _key: string;
+    }>;
+    featuredImages?: Array<{
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }>;
+  };
   aboutText?: string;
 };
 
