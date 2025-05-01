@@ -6,7 +6,7 @@ import LinkWrapper from "./LinkWrapper";
 
 const Footer = () => {
   return (
-    <div className="bottom-0 left-0 flex h-[450px] w-full flex-col justify-between bg-stone-950 px-4 py-16 text-white xl:px-16 xl:py-20">
+    <div className="bottom-0 left-0 flex h-[450px] w-full flex-col justify-between bg-stone-950 px-4 pt-16 pb-10 text-white xl:px-16 xl:pt-18">
       <div className="flex flex-col justify-between gap-10 lg:flex-row">
         <h2 className={`text-2xl uppercase`}>Shivam Bhutani</h2>
         <div className="flex justify-between text-lg lg:gap-40">
@@ -27,6 +27,13 @@ const Footer = () => {
             ))}
           </div>
         </div>
+      </div>
+      <div className="flex w-full justify-between gap-10 text-sm sm:text-base">
+        <p>Copyright Shivam Bhutani ©2025</p>
+        <p>
+          Website by{" "}
+          <Link href="mailto:sushant20.sharma00@gmail.com">Sushant</Link>
+        </p>
       </div>
     </div>
   );
