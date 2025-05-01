@@ -120,7 +120,10 @@ const Featured = ({ data }: { data: HomePageData }) => {
             ))}
           </div>
           <LinkWrapper color="bg-white">
-            <Link href="/contact" className="hidden lg:block">
+            <Link
+              href="mailto:shivambhutaniphotography@gmail.com"
+              className="hidden lg:block"
+            >
               Contact
             </Link>
           </LinkWrapper>
