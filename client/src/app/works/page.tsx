@@ -19,6 +19,13 @@ const WORKS_QUERY = `*[_type == "worksPage"][0] {
   }
 }`;
 
+export async function generateMetadata() {
+  return {
+    title: "Works",
+    description: "Portraits and fashion works by Shivam Bhutani Photographer",
+  };
+}
+
 export default async function Page() {
   const data: WorksPageData = await client.fetch(WORKS_QUERY);
 

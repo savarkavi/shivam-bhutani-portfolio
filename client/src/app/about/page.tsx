@@ -56,6 +56,13 @@ const ABOUT_QUERY = `*[_type == "aboutPage"][0] {
   }
 }`;
 
+export async function generateMetadata() {
+  return {
+    title: "About",
+    description: "About and Bio of Shivam Bhutani Photographer",
+  };
+}
+
 export default async function Page() {
   const data: AboutPageData = await client.fetch(ABOUT_QUERY);
 

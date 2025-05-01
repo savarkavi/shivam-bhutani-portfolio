@@ -23,6 +23,19 @@ const GALLERY_QUERY = `
 }
 `;
 
+interface PageProps {
+  params: Promise<{ album: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const { album } = await params;
+
+  return {
+    title: album,
+    description: `${album} photography album by Shivam Bhutani Photographer`,
+  };
+}
+
 export default async function Page({
   params,
 }: {
