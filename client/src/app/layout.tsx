@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <ReactLenis root>
         <body
-          className={`${cormorantGaramond.variable} ${boska.variable} antialiased`}
+          className={`${cormorantGaramond.variable} ${boska.variable} font-cormorant-garamond antialiased`}
         >
           <div className="z-[99] flex h-full min-h-screen flex-col justify-between bg-white">
             <Header />
