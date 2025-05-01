@@ -16,7 +16,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 const Featured = ({ data }: { data: HomePageData }) => {
   const featuredImgUrls =
     data.featuredSection?.featuredImages?.map((file) =>
-      urlFor(file)?.format("webp").url(),
+      urlFor(file)?.format("webp").quality(80).url(),
     ) || [];
 
   const featuredImgLQIP = data.featuredSection?.featuredImages?.map(
