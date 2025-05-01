@@ -8,11 +8,17 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import { useRef } from "react";
 import { urlFor } from "../../lib/utils";
-import { WorksPageData } from "@/sanity/customTypes";
+import { TotalImagesData, WorksPageData } from "@/sanity/customTypes";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-const WorksContentWrapper = ({ data }: { data: WorksPageData }) => {
+const WorksContentWrapper = ({
+  data,
+  totalImagesData,
+}: {
+  data: WorksPageData;
+  totalImagesData: TotalImagesData;
+}) => {
   const container = useRef(null);
 
   return (
@@ -43,6 +49,10 @@ const WorksContentWrapper = ({ data }: { data: WorksPageData }) => {
               ? urlFor(item.coverImage)?.url()
               : null;
 
+            const album = totalImagesData?.albumsWithCounts?.find(
+              (album) => album?.albumName === item.sectionTitle,
+            );
+
             const coverImageLQIP = item.coverImage?.asset?.metadata?.lqip;
             return (
               <div
@@ -66,7 +76,7 @@ const WorksContentWrapper = ({ data }: { data: WorksPageData }) => {
                     <h2 className="text-4xl uppercase lg:text-6xl">
                       {item.sectionTitle}
                     </h2>
-                    {/* <p>{`21 photos`}</p> */}
+                    <p>{album?.imageCount && `${album?.imageCount} photos`}</p>
                   </div>
                   <p className="max-w-[800px] text-sm lg:text-lg xl:max-w-[1000px]">
                     {item.description}

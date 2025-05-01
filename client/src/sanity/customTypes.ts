@@ -22,6 +22,14 @@ export type ResolvedImageAsset = {
   };
 };
 
+export type TotalImagesData = {
+  albumsWithCounts: Array<{
+    _key: string;
+    albumName?: string;
+    imageCount?: number;
+  }>;
+};
+
 export type HomePageData = {
   _id: string;
   _type: "homePage";

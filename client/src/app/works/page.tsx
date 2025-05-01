@@ -1,6 +1,6 @@
 import WorksContentWrapper from "@/components/works-page/WorksContentWrapper";
 import { client } from "@/sanity/client";
-import { WorksPageData } from "@/sanity/customTypes";
+import { TotalImagesData, WorksPageData } from "@/sanity/customTypes";
 
 const WORKS_QUERY = `*[_type == "worksPage"][0] {
   ...,
@@ -19,6 +19,14 @@ const WORKS_QUERY = `*[_type == "worksPage"][0] {
   }
 }`;
 
+const TOTAL_IMAGES_QUERY = `*[_type == "galleryPage"][0] {
+  "albumsWithCounts": albums[] {
+    _key,
+    albumName,
+    "imageCount": count(images) // Count the items in the 'images' array for this album
+  }
+}`;
+
 export async function generateMetadata() {
   return {
     title: "Works",
@@ -29,9 +37,12 @@ export async function generateMetadata() {
 export default async function Page() {
   const data: WorksPageData = await client.fetch(WORKS_QUERY);
 
+  const totalImagesData: TotalImagesData =
+    await client.fetch(TOTAL_IMAGES_QUERY);
+
   return (
     <div className="min-h-screen">
-      <WorksContentWrapper data={data} />
+      <WorksContentWrapper data={data} totalImagesData={totalImagesData} />
     </div>
   );
 }
