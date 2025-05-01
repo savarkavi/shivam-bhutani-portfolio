@@ -29,7 +29,7 @@ const Bio = ({ data }: { data: AboutPageData }) => {
           Biography
         </h2>
         <p
-          className="max-w-[450px] text-justify text-2xl font-semibold xl:text-3xl 2xl:text-4xl"
+          className="max-w-[450px] text-justify text-2xl xl:text-3xl 2xl:text-4xl"
           style={{ wordSpacing: "5px" }}
         >
           {data.biography?.biographyContent ||
