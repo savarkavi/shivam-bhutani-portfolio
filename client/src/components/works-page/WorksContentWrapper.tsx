@@ -30,7 +30,7 @@ const WorksContentWrapper = ({ data }: { data: WorksPageData }) => {
               <Link
                 key={item._key}
                 href={`/gallery/${item.slug?.current}`}
-                className="w-fit text-xl font-semibold"
+                className="w-fit text-xl font-semibold transition-all duration-300 hover:text-gray-500"
               >
                 {`[${i}] ${item.sectionTitle}`}
               </Link>
