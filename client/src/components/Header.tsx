@@ -3,10 +3,7 @@
 import { navigationItems } from "@/lib/constants";
 import Link from "next/link";
 import LinkWrapper from "./LinkWrapper";
-import { boska } from "@/fonts/fonts";
 import { usePathname } from "next/navigation";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 import { useRef } from "react";
 
 const Header = () => {
@@ -17,30 +14,6 @@ const Header = () => {
   const isHome = pathname.endsWith("/");
   const isGallery = pathname.includes("/gallery");
 
-  useGSAP(
-    () => {
-      if (isHome) {
-        gsap.from(".title-reveal", {
-          yPercent: 100,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          delay: 4.8,
-        });
-
-        gsap.from(".link-reveal", {
-          yPercent: 100,
-          opacity: 0,
-          duration: 0.5,
-          ease: "power1.out",
-          stagger: 0.1,
-          delay: 4.8,
-        });
-      }
-    },
-    { scope: container },
-  );
-
   return (
     <div
       ref={container}
@@ -50,34 +23,31 @@ const Header = () => {
           : "h-fit items-start pt-8 text-cyan-900"
       }`}
     >
-      <div className="overflow-hidden">
-        <h1
-          className={`${boska.className} title-reveal ${
-            isHome
-              ? "text-center 2xl:text-9xl"
-              : isGallery
-                ? "2xl:text-6xl"
-                : "2xl:text-[12rem]"
-          } hidden font-bold uppercase xl:block xl:text-8xl`}
-        >
-          {isHome || isGallery ? (
-            "Shivam Bhutani"
-          ) : (
-            <>
-              Shivam
-              <br />
-              Bhutani
-            </>
-          )}
-        </h1>
-      </div>
-
-      <div className="text-lg font-semibold uppercase lg:text-xl">
-        <div className="flex items-center gap-6 font-bold sm:gap-8">
+      <h1
+        className={`${
+          isHome
+            ? "text-center 2xl:text-9xl"
+            : isGallery
+              ? "2xl:text-6xl"
+              : "2xl:text-[12rem]"
+        } font-boska hidden font-bold uppercase xl:block xl:text-8xl`}
+      >
+        {isHome || isGallery ? (
+          "Shivam Bhutani"
+        ) : (
+          <>
+            Shivam
+            <br />
+            Bhutani
+          </>
+        )}
+      </h1>
+      <div className="font-cormorant-garamond text-lg font-semibold uppercase lg:text-xl">
+        <div className="flex items-center gap-6 sm:gap-8">
           {navigationItems.map((item) => (
             <div key={item.id} className="overflow-hidden">
               <LinkWrapper
-                color="bg-emerald-700"
+                color={isHome ? "bg-black" : "bg-emerald-700"}
                 containerClassName="link-reveal block"
               >
                 <Link href={item.href}>{item.name}</Link>
