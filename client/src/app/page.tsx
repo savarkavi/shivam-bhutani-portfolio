@@ -34,6 +34,8 @@ const HOME_QUERY = `*[_type == "homePage"][0] {
   },
 }`;
 
+export const revalidate = 10;
+
 export default async function Home() {
   const data: HomePageData = await client.fetch(HOME_QUERY);
 

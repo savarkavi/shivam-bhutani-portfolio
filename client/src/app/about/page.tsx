@@ -56,6 +56,8 @@ const ABOUT_QUERY = `*[_type == "aboutPage"][0] {
   }
 }`;
 
+export const revalidate = 10;
+
 export async function generateMetadata() {
   return {
     title: "About",

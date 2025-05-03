@@ -27,6 +27,8 @@ const TOTAL_IMAGES_QUERY = `*[_type == "galleryPage"][0] {
   }
 }`;
 
+export const revalidate = 10;
+
 export async function generateMetadata() {
   return {
     title: "Works",

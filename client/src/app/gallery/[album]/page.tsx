@@ -27,6 +27,8 @@ interface PageProps {
   params: Promise<{ album: string }>;
 }
 
+export const revalidate = 10;
+
 export async function generateMetadata({ params }: PageProps) {
   const { album } = await params;
 
