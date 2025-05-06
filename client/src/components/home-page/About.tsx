@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import { useRef } from "react";
 import LinkWrapper from "../LinkWrapper";
-import { getFormattedLines } from "@/lib/utils";
+import { getFormattedLines, urlFor } from "@/lib/utils";
 import { HomePageData } from "@/sanity/customTypes";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -56,6 +56,12 @@ const About = ({ data }: { data: HomePageData }) => {
 
   const lines = getFormattedLines(data.aboutText, 10);
 
+  const footerImageFile = data.footerImage;
+  const footerImageUrl = footerImageFile
+    ? urlFor(footerImageFile)?.format("webp").quality(90).url()
+    : null;
+  const footerImageLQIP = footerImageFile?.asset?.metadata?.lqip;
+
   return (
     <div ref={main} className="flex min-h-screen flex-col gap-24 pt-48">
       <div className="flex flex-col items-start gap-16 px-8">
@@ -80,11 +86,12 @@ const About = ({ data }: { data: HomePageData }) => {
         <div className="relative -mt-[10%] h-[140vh] w-full">
           <Image
             ref={media}
-            src="https://5ct1dh56fd.ufs.sh/f/MPc6a3KK4UyTaEIpEvDkEnDItl6LXxvw3KS5QPWmzypukG0b"
+            src={`${footerImageUrl}`}
             alt="model"
             fill
             className="object-cover"
-            priority
+            placeholder={footerImageLQIP ? "blur" : "empty"}
+            blurDataURL={footerImageLQIP}
           />
         </div>
       </div>
