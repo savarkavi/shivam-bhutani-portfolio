@@ -54,6 +54,7 @@ const Hero = ({ data }: { data: HomePageData }) => {
       },
       yPercent: -100,
       ease: "linear",
+      duration: 0.2,
     });
 
     const linesContainer = paragraphLinesRef.current;
