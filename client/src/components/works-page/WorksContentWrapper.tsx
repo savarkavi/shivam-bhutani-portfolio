@@ -61,12 +61,12 @@ const WorksContentWrapper = ({
                   index % 2 === 1 ? "xl:flex-row-reverse" : ""
                 }`}
               >
-                <div className="group relative h-[1200px] w-full cursor-pointer overflow-hidden transition-all hover:grayscale-100">
+                <div className="group relative h-[600px] w-full cursor-pointer overflow-hidden transition-all hover:grayscale-100 2xl:h-[1200px]">
                   <Image
                     src={coverImageUrl || "https://placeholder.co/550x310/png"}
                     alt={item.coverImage?.alt || "cover image"}
                     fill
-                    className="scale-105 object-cover transition-all duration-500 group-hover:scale-100"
+                    className="scale-105 object-contain transition-all duration-500 group-hover:scale-100 2xl:object-cover"
                     placeholder={coverImageLQIP ? "blur" : "empty"}
                     blurDataURL={coverImageLQIP}
                   />
