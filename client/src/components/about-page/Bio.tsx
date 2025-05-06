@@ -10,8 +10,8 @@ const Bio = ({ data }: { data: AboutPageData }) => {
   const bioImageLQIP = data.biography?.bioImage?.asset?.metadata?.lqip;
 
   return (
-    <div className="mt-32 flex flex-col gap-12 lg:flex-row 2xl:gap-24">
-      <div className="relative h-[800px] w-full lg:max-w-[60%] lg:rounded-md">
+    <div className="mt-16 flex h-full flex-col gap-12 lg:flex-row 2xl:mt-32 2xl:gap-24">
+      <div className="relative h-[400px] w-full lg:h-[500px] lg:max-w-[60%] lg:rounded-md 2xl:h-[800px]">
         <Image
           src={bioImageUrl || "/shivam-portrait.webp"}
           alt={
