@@ -106,5 +106,11 @@ export const homePage = defineType({
       type: 'text',
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'footerImage',
+      title: 'Footer Image',
+      type: 'image',
+      validation: (rule) => rule.required(),
+    }),
   ],
 })
