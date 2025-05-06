@@ -46,6 +46,21 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Footer = {
+  _id: string;
+  _type: "footer";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  footerLinks?: Array<{
+    footerLinkName?: string;
+    footerLinkUrl?: string;
+    _key: string;
+  }>;
+  copyrightText?: string;
+};
+
 export type GalleryAlbum = {
   _type: "galleryAlbum";
   albumName?: string;
@@ -124,6 +139,18 @@ export type HomePage = {
     }>;
   };
   aboutText?: string;
+  footerImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
 };
 
 export type AboutPage = {
@@ -315,5 +342,5 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Geopoint | GalleryAlbum | GalleryPage | HomePage | AboutPage | SanityFileAsset | WorkSection | Slug | WorksPage | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Geopoint | Footer | GalleryAlbum | GalleryPage | HomePage | AboutPage | SanityFileAsset | WorkSection | Slug | WorksPage | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;

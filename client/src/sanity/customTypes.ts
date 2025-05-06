@@ -66,6 +66,13 @@ export type HomePageData = {
     }>;
   };
   aboutText?: string;
+  footerImage?: {
+    asset?: ResolvedImageAsset;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
 };
 
 export type AboutPageData = {
