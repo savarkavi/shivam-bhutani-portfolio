@@ -83,9 +83,7 @@ const Hero = ({ data }: { data: HomePageData }) => {
   );
 
   const heroImgFile = data.heroSection?.heroImage;
-  const heroImgUrl = heroImgFile
-    ? urlFor(heroImgFile)?.format("webp").url()
-    : null;
+  const heroImgUrl = heroImgFile ? urlFor(heroImgFile)?.url() : null;
   const heroImgLQIP = heroImgFile?.asset?.metadata?.lqip;
 
   return (
