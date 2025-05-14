@@ -83,8 +83,12 @@ const Hero = ({ data }: { data: HomePageData }) => {
   );
 
   const heroImgFile = data.heroSection?.heroImage;
-  const heroImgUrl = heroImgFile ? urlFor(heroImgFile)?.url() : null;
+  const heroImgUrl = heroImgFile
+    ? urlFor(heroImgFile)?.format("jpg").quality(100).url()
+    : null;
   const heroImgLQIP = heroImgFile?.asset?.metadata?.lqip;
+
+  console.log(heroImgUrl);
 
   return (
     <div
@@ -125,6 +129,7 @@ const Hero = ({ data }: { data: HomePageData }) => {
             priority
             placeholder={heroImgLQIP ? "blur" : "empty"}
             blurDataURL={heroImgLQIP}
+            quality={100}
           />
         </div>
       </div>
