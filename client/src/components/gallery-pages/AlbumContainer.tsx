@@ -11,7 +11,7 @@ import { RiGalleryView2 } from "react-icons/ri";
 import { GalleryPageData } from "@/sanity/customTypes";
 
 const AlbumContainer = ({ data }: { album: string; data: GalleryPageData }) => {
-  const [isAlbumMode, setIsAlbumMode] = useState(false);
+  const [isAlbumMode, setIsAlbumMode] = useState(true);
 
   const albumImages = data?.album?.images?.map((item) => item);
   const albumImagesUrl = albumImages?.map((item) =>
